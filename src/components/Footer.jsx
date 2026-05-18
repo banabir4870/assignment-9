@@ -33,28 +33,28 @@ const Footer = () => {
 
                             <Link
                                 href="#"
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#C8B26A] hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full border border-[#4e4e35] flex items-center justify-center hover:bg-[#4e4e35] hover:text-white transition-all duration-300"
                             >
                                 <FaFacebookF />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#C8B26A] hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full border border-[#4e4e35] flex items-center justify-center hover:bg-[#4e4e35] hover:text-white transition-all duration-300"
                             >
                                 <FaInstagram />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#C8B26A] hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full border border-[#4e4e35] flex items-center justify-center hover:bg-[#4e4e35] hover:text-white transition-all duration-300"
                             >
                                 <FaXTwitter />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#C8B26A] hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full border border-[#4e4e35] flex items-center justify-center hover:bg-[#4e4e35] hover:text-white transition-all duration-300"
                             >
                                 <FaGithub />
                             </Link>

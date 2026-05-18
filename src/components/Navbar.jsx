@@ -10,7 +10,7 @@ const Navbar = () => {
             <nav className='w-10/12 mx-auto flex justify-between items-center py-2'>
                 {/* logo */}
                 <div>
-                    <Link href={'/'}><Image src={'/assets/drive_Fleet2.png'} alt='drive fleet logo' width={120} height={100} ></Image></Link>
+                    <Link href={'/'}><Image src={'/assets/drive_Fleet2.png'} alt='drive fleet logo' width={150} height={100} ></Image></Link>
                 </div>
                 {/* links */}
                 <div>

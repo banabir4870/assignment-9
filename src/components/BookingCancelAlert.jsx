@@ -8,10 +8,12 @@ import { BiTrash } from "react-icons/bi";
 export function BookingCancelAlert({ booking }) {
 
     const handleCancelBooking = async () => {
+        const {data: tokenData} = await authClient.token()
         const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             }
         })
         const data = await res.json()

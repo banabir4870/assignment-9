@@ -2,14 +2,24 @@
 import { cinzel } from '@/app/fonts';
 import { BookingCarModal } from '@/components/BookingCarModal';
 import SpecificationTable from '@/components/SpecificationTable';
+import { auth } from '@/lib/auth';
 import { Button, Card, Chip } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const CarDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5000/all-car/${id}`)
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/all-car/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const car = await res.json()
     const { availability, booking_count, car_name, daily_rent, description, image, owner_email, owner_name, pickup_location, seat_capacity, type, _id } = car;
     return (

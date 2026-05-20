@@ -29,6 +29,11 @@ const RegisterPage = () => {
             alert(`${error.message}`)
         }
     };
+    const handleGoogleLogin = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
     return (
         <Card className='w-1/4 mx-auto my-10'>
             <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>Create Account</h1>
@@ -95,7 +100,7 @@ const RegisterPage = () => {
 
                     <hr className="flex-1 border-gray-300" />
                 </div>
-                <Button variant="outline" className={'flex items-center rounded-sm w-full'}><FaGoogle /> Log In With Google</Button>
+                <Button variant="outline" className={'flex items-center rounded-sm w-full'} onClick={handleGoogleLogin}><FaGoogle /> Log In With Google</Button>
                 <p className="text-center">Already Have Account? <Link href={'/login'} className="text-blue-500 font-semibold">LogIn</Link></p>
             </Form>
         </Card>

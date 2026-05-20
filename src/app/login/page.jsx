@@ -26,6 +26,12 @@ const LogInPage = () => {
             alert(`${error.message}`)
         }
     };
+
+    const handleGoogleLogin = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
     return (
         <Card className='w-1/4 mx-auto my-10'>
             <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>Welcome Back</h1>
@@ -77,7 +83,7 @@ const LogInPage = () => {
 
                     <hr className="flex-1 border-gray-300" />
                 </div>
-                <Button variant="outline" className={'flex items-center rounded-sm w-full'}><FaGoogle /> Log In With Google</Button>
+                <Button variant="outline" className={'flex items-center rounded-sm w-full'} onClick={handleGoogleLogin}><FaGoogle /> Log In With Google</Button>
                 <p className="text-center">Don&apos;t Have An Account? <Link href={'/register'} className="text-blue-500 font-semibold">Register</Link></p>
             </Form>
         </Card>

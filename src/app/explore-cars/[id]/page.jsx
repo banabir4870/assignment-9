@@ -1,5 +1,6 @@
 
 import { cinzel } from '@/app/fonts';
+import { BookingCarModal } from '@/components/BookingCarModal';
 import SpecificationTable from '@/components/SpecificationTable';
 import { Button, Card, Chip } from '@heroui/react';
 import Image from 'next/image';
@@ -35,7 +36,7 @@ const CarDetailsPage = async ({ params }) => {
                 </div>
                 <div className='col-span-1 space-y-2'>
                     <SpecificationTable car={car}></SpecificationTable>
-                    <Button variant='outline' className={`w-full rounded-lg ${cinzel.className} text-[#4e4e35] border-[#4e4e35] text-xl hover:text-white hover:bg-[#4e4e35]`}>Book Now</Button>
+                    <BookingCarModal car={car}></BookingCarModal>
                 </div>
             </div>
 

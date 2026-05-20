@@ -22,7 +22,6 @@ const CarCard = ({ car }) => {
                 <p>{seat_capacity}</p>
             </div>
             <Link href={`/explore-cars/${_id}`}><Button variant='outline' className={'w-full border-[#4e4e35] text-[#4e4e35] text-lg'}>View Details</Button></Link>
-
         </Card>
     );
 };

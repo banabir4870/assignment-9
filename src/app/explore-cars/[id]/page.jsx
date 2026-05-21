@@ -3,10 +3,9 @@ import { cinzel } from '@/app/fonts';
 import { BookingCarModal } from '@/components/BookingCarModal';
 import SpecificationTable from '@/components/SpecificationTable';
 import { auth } from '@/lib/auth';
-import { Button, Card, Chip } from '@heroui/react';
+import { Card, Chip } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 const CarDetailsPage = async ({ params }) => {
@@ -15,7 +14,7 @@ const CarDetailsPage = async ({ params }) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/all-car/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-car/${id}`, {
         headers: {
             authorization: `Bearer ${token}`
         }

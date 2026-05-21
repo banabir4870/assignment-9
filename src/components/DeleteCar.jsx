@@ -10,7 +10,7 @@ export function DeleteCar({ car }) {
 
     const handleDelete = async () => {
         const { data: tokenData } = await authClient.token()
-        const res = await fetch(`http://localhost:5000/all-car/${car._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-car/${car._id}`, {
             method: 'DELETe',
             headers: {
                 'content-type': 'application/json',

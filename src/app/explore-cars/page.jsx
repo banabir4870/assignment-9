@@ -9,7 +9,7 @@ const ExploreCarsPage = async ({ searchParams }) => {
     const type = params?.type || '';
 
     const res = await fetch(
-        `http://localhost:5000/all-car?search=${search}&type=${type}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/all-car?search=${search}&type=${type}`,
         { cache: 'no-store' }
     );
 

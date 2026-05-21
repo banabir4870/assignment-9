@@ -5,7 +5,6 @@ import { cinzel } from '../fonts';
 import { Card, Chip } from '@heroui/react';
 import Image from 'next/image';
 import { CiLocationOn } from 'react-icons/ci';
-import { MdAirlineSeatReclineExtra } from 'react-icons/md';
 import { BookingCancelAlert } from '@/components/BookingCancelAlert';
 import { SlCalender } from 'react-icons/sl';
 
@@ -20,15 +19,13 @@ const MyBookingsPage = async () => {
 
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`, {
         headers: {
             authorization: `Bearer ${token}`
         }
     })
 
     const bookings = await res.json()
-
-    console.log('boookings:', bookings)
 
     return (
         <div className='w-10/12 lg:w-8/12 mx-auto my-10'>

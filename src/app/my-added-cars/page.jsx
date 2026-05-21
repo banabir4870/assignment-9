@@ -5,11 +5,9 @@ import Link from 'next/link';
 import React from 'react';
 import { cinzel } from '../fonts';
 import Image from 'next/image';
-import { BookingCancelAlert } from '@/components/BookingCancelAlert';
 import { DeleteCar } from '@/components/DeleteCar';
 import { MdAirlineSeatReclineExtra } from 'react-icons/md';
 import { CiLocationOn } from 'react-icons/ci';
-import { FaRegEdit } from 'react-icons/fa';
 import { UpdateCarModal } from '@/components/UpdateCarModal';
 
 const MyAddedCarsPage = async () => {
@@ -20,9 +18,8 @@ const MyAddedCarsPage = async () => {
         headers: await headers()
     })
     const user = session?.user;
-    console.log('user: ', user);
 
-    const res = await fetch(`http://localhost:5000/all-car/user/${user?.email}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-car/user/${user?.email}`, {
         headers: {
             authorization: `Bearer ${token}`
         }

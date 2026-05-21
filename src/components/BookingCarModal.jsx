@@ -2,20 +2,15 @@
 
 import { cinzel } from "@/app/fonts";
 import { authClient } from "@/lib/auth-client";
-import { Button, Input, Label, Modal, Surface, TextField, Select, ListBox, FieldError, TextArea } from "@heroui/react";
+import { Button, Label, Modal, Surface, TextField, Select, ListBox, FieldError, TextArea } from "@heroui/react";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
-import { use, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaRegEdit } from "react-icons/fa";
-import { IoIosSave } from "react-icons/io";
-import { RiDeleteBin6Line } from "react-icons/ri";
 
 export function BookingCarModal({ car }) {
     const userData = authClient.useSession()
     const user = userData.data?.user;
     const [bookingDate, setBookingDate] = useState(null)
-    console.log("user from here:", user)
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -36,7 +31,7 @@ export function BookingCarModal({ car }) {
 
         const {data: tokenData} = await authClient.token()
 
-        const res = await fetch('http://localhost:5000/booking', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

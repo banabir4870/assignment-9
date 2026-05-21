@@ -3,7 +3,6 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Input, Label, Modal, Surface, TextField, Select, ListBox, FieldError, TextArea } from "@heroui/react";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { FaRegEdit } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
@@ -18,9 +17,7 @@ export function UpdateCarModal({ car }) {
         updatedData.availability = updatedData.availability === "true";
         const {data: tokenData} = await authClient.token()
 
-        console.log('car data: ', updatedData);
-
-        const res = await fetch(`http://localhost:5000/all-car/${_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-car/${_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

@@ -1,15 +1,14 @@
 'use client'
-import { Button, Card, Description, FieldError, Form, Input, Label, TextField, Select, ListBox, TextArea, cardVariants } from '@heroui/react';
+import { Button, Card, Description, FieldError, Form, Input, Label, TextField, Select, ListBox, TextArea } from '@heroui/react';
 import React from 'react';
 import { cinzel } from '../fonts';
 import { authClient, useSession } from '@/lib/auth-client';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 const AddCarPage = () => {
     const router = useRouter()
     const { data: session } = useSession();
-    console.log('session', session)
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -19,10 +18,9 @@ const AddCarPage = () => {
         carData.owner_name = session?.user?.name;
         carData.booking_count = 0;
 
-        console.log('car data: ', carData);
         const {data: tokenData} = await authClient.token()
 
-        const res = await fetch("http://localhost:5000/all-car", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-car`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

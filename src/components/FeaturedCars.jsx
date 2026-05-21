@@ -1,13 +1,10 @@
 import React from 'react';
 import CarCard from './CarCard';
 import { cinzel } from '@/app/fonts';
-import { headers } from 'next/headers';
-import { auth } from '@/lib/auth';
 
 const FeaturedCars = async () => {
-    const res = await fetch('http://localhost:5000/featured')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`)
     const cars = await res.json()
-    console.log('cars:', cars)
     return (
         <div className='w-10/12 mx-auto my-10'>
             <div className='text-center space-y-2 mb-10'>

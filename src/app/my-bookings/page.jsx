@@ -31,21 +31,21 @@ const MyBookingsPage = async () => {
     console.log('boookings:', bookings)
 
     return (
-        <div className='w-8/12 mx-auto my-10'>
+        <div className='w-10/12 lg:w-8/12 mx-auto my-10'>
             <div>
-                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>My Bookings</h1>
+                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-2xl md:text-3xl`}>My Bookings</h1>
             </div>
 
             <div className='grid gap-6'>
                 {
                     bookings.length > 0 ? bookings.map(booking => <div key={booking._id}>
                         <Card className='border'>
-                            <div className='flex gap-4'>
+                            <div className='lg:flex gap-4'>
                                 <div>
-                                    <Image src={booking.image} alt={booking.carName} height={200} width={200} className='border rounded-lg'></Image>
+                                    <Image src={booking.image} alt={booking.carName} height={500} width={500} className='border rounded-lg w-full lg:w-[200px]'></Image>
                                 </div>
-                                <div className='flex-1 flex justify-between items-center'>
-                                    <div className='space-y-2'>
+                                <div className='lg:flex-1 md:flex justify-between items-center'>
+                                    <div className='space-y-4'>
                                         <div className='flex gap-10 items-center'>
                                             <h1 className={`text-3xl font-bold ${cinzel.className}`}>{booking.carName}</h1>
                                             <p className='text-3xl font-semibold'>${booking.price}</p>
@@ -56,7 +56,7 @@ const MyBookingsPage = async () => {
                                         </div>
                                         <p className='flex items-center gap-2'><SlCalender />{new Date(booking.bookingDate).toLocaleString()}</p>
                                     </div>
-                                    <div className='flex gap-4'>
+                                    <div className='flex gap-4 mt-4 lg:mt-null'>
                                         <BookingCancelAlert booking={booking}></BookingCancelAlert>
                                     </div>
                                 </div>

@@ -22,28 +22,30 @@ const MyAddedCarsPage = async () => {
     const user = session?.user;
     console.log('user: ', user);
 
-    const res = await fetch(`http://localhost:5000/all-car/user/${user?.email}`,{
+    const res = await fetch(`http://localhost:5000/all-car/user/${user?.email}`, {
         headers: {
             authorization: `Bearer ${token}`
         }
     })
     const cars = await res.json()
     return (
-        <div className='w-8/12 mx-auto my-10'>
-            <div className='flex justify-between my-6'>
-                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>My Cars For Rent</h1>
-                <Link href={'/add-car'}><Button variant='outline' className='text-[#847c6f] border-[#847c6f] font-bold hover:text-[#4e4e35] hover:border-[#4e4e35] hover:bg-gray-100'>Add Car</Button></Link>
+        <div className='w-10/12 lg:w-8/12 mx-auto my-10'>
+            <div className='lg:flex justify-between my-6'>
+                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-2xl lg:text-3xl`}>My Cars For Rent</h1>
+                <div className='flex justify-center'>
+                    <Link href={'/add-car'}><Button variant='outline' className='text-[#847c6f] border-[#847c6f] font-bold hover:text-[#4e4e35] hover:border-[#4e4e35] hover:bg-gray-100'>Add Car</Button></Link>
+                </div>
             </div>
             <div className='grid gap-6'>
                 {
                     cars.length > 0 ? cars.map(car => <div key={car._id}>
                         <Card className='border'>
-                            <div className='flex gap-4'>
+                            <div className='lg:flex gap-4'>
                                 <div>
-                                    <Image src={car.image} alt={car.car_name} height={200} width={200} className='border rounded-lg'></Image>
+                                    <Image src={car.image} alt={car.car_name} height={500} width={500} className='border rounded-lg w-full lg:w-[200px]'></Image>
                                 </div>
-                                <div className='flex-1 flex justify-between items-center'>
-                                    <div className='space-y-2'>
+                                <div className='lg:flex-1 lg:flex justify-between items-center space-y-4 lg:space-y-null'>
+                                    <div className='space-y-4 lg:space-y-1'>
                                         <div className='flex gap-10 items-center'>
                                             <h1 className={`text-3xl font-bold ${cinzel.className}`}>{car.car_name}</h1>
                                             <p className='text-3xl font-semibold'>${car.daily_rent}</p>

@@ -25,7 +25,7 @@ const Navbar = () => {
                 </div>
                 {/* links */}
                 <div>
-                    <ul className={`${cinzel.className} flex items-center gap-6`}>
+                    <ul className={`${cinzel.className} grid md:grid-cols-2 lg:grid-cols-4 items-center gap-6 hidden md:grid`}>
                         <li><Link href={'/'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Home</Link></li>
                         <li><Link href={'/explore-cars'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Explore Cars</Link></li>
                         <li><Link href={'/add-car'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Add Car</Link></li>

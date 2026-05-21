@@ -42,9 +42,9 @@ const AddCarPage = () => {
 
     }
     return (
-        <Card className='w-1/2 mx-auto my-10'>
+        <Card className='w-3/4 md:w-1/2 mx-auto my-10'>
             <div className='my-2'>
-                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>Turn Your Car Into Income</h1>
+                <h1 className={`${cinzel.className} mb-2 font-bold text-center text-2xl md:text-3xl`}>Turn Your Car Into Income</h1>
                 <p className='text-muted text-center'>List your vehicle on DriveFleet and let users book trusted, comfortable rides anytime they need.</p>
             </div>
             <Form className="flex flex-col gap-4" onSubmit={onSubmit}>

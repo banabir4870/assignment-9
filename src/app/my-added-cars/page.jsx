@@ -39,7 +39,7 @@ const MyAddedCarsPage = async () => {
             <div className='grid gap-6'>
                 {
                     cars.length > 0 ? cars.map(car => <div key={car._id}>
-                        <Card className='border'>
+                        <Card className='border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2'>
                             <div className='lg:flex gap-4'>
                                 <div>
                                     <Image src={car.image} alt={car.car_name} height={500} width={500} className='border rounded-lg w-full lg:w-[200px]'></Image>

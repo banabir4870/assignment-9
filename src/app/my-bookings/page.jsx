@@ -39,7 +39,7 @@ const MyBookingsPage = async () => {
             <div className='grid gap-6'>
                 {
                     bookings.length > 0 ? bookings.map(booking => <div key={booking._id}>
-                        <Card className='border'>
+                        <Card className='border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2'>
                             <div className='lg:flex gap-4'>
                                 <div>
                                     <Image src={booking.image} alt={booking.carName} height={500} width={500} className='border rounded-lg w-full lg:w-[200px]'></Image>

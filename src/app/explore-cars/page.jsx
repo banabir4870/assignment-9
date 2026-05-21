@@ -1,10 +1,9 @@
 import CarCard from '@/components/CarCard';
-import React from 'react';
 import { cinzel } from '../fonts';
-import CarsSearch from '@/components/CarsSearch';
+import { Button } from '@heroui/react';
 
 const ExploreCarsPage = async ({ searchParams }) => {
-    const params = await searchParams;
+    const params = await searchParams || {};
 
     const search = params?.search || '';
     const type = params?.type || '';
@@ -22,21 +21,50 @@ const ExploreCarsPage = async ({ searchParams }) => {
                 <h1 className={`${cinzel.className} font-semibold text-2xl md:text-4xl text-[#4e4e35]`}>
                     Explore Premium Cars
                 </h1>
-                <p>Choose from a wide range of luxury, SUV, sedan and sports cars.</p>
+                <p>Choose from luxury, SUV, sedan and sports cars</p>
             </div>
-            <CarsSearch />
+            <form className="flex gap-4 justify-center mb-8">
+                <input
+                    type="text"
+                    name="search"
+                    defaultValue={search}
+                    placeholder="Search car name..."
+                    className="border-2 border-[#4e4e35] w-2/6 px-2"
+                />
+                <select
+                    name="type"
+                    defaultValue={type}
+                    className="border-2 border-[#4e4e35] w-1/6 px-2"
+                >
+                    <option value="">All</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="Van">Van</option>
+                </select>
+                <Button
+                    type="submit"
+                    className="bg-[#4e4e30] border-[#4e4e35] text-white px-8 py-3 rounded-none"
+                >
+                    Search
+                </Button>
+            </form>
             <div className='grid lg:grid-cols-3 gap-6'>
-                {
-                    allCars.length > 0 ? (
-                        allCars.map(car => (
-                            <CarCard key={car._id} car={car} />
-                        ))
-                    ) : (
-                        <div className='col-span-3 text-center py-20 text-gray-500'>
-                            No cars found
-                        </div>
-                    )
-                }
+                {allCars.length === 0 ? (
+                    <div className="col-span-full text-center py-10">
+                        <h2 className="text-2xl font-semibold text-gray-500">
+                            No Cars Found 🚗
+                        </h2>
+                        <p className="text-gray-400 mt-2">
+                            Try searching with different keywords or filters
+                        </p>
+                    </div>
+                ) : (
+                    allCars.map(car => (
+                        <CarCard key={car._id} car={car} />
+                    ))
+                )}
             </div>
         </div>
     );

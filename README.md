@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚗 DriveFleet — Premium Car Rental Platform
+---
 
-## Getting Started
+## 🌐 Live Site
 
-First, run the development server:
+🔗 **[https://drivefleet-client-a9-banabir.vercel.app](https://drivefleet-client-a9-banabir.vercel.app/)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📖 About the Project
+
+DriveFleet is a full-stack car rental platform where users can browse available vehicles, view detailed car information, make bookings, and manage their own car listings. The platform supports secure authentication, JWT-protected private routes, and a fully responsive modern UI designed for all screen sizes.
+
+---
+
+## ✨ Key Features
+
+- 🔐 **Secure Authentication** — Email/password and Google login powered by BetterAuth with JWT stored in HTTPOnly cookies for maximum security
+- 🚘 **Full Car Management (CRUD)** — Logged-in users can add, update, and delete their own car listings with real-time feedback
+- 📅 **Smart Booking System** — Users can book any available car with driver preference and special notes, with instant booking confirmation
+- 🔍 **Search and Filter** — Search cars by name using MongoDB `$regex` and filter by car type (SUV, Sedan, Luxury, etc.) for a seamless browsing experience
+- 📊 **Booking Count Tracking** — Every successful booking automatically increments the car's booking count using MongoDB `$inc` operator
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+| Technology | Purpose |
+|---|---|
+| Next.js 15 | React framework with App Router |
+| Tailwind CSS | Utility-first styling |
+| Lucide React | Icon library |
+| React Hot Toast | Toast notifications |
+| Framer Motion | Animations |
+| Axios | HTTP requests with credentials |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js + Express | REST API server |
+| MongoDB + Mongoose | Database and ODM |
+| BetterAuth | Authentication and session management |
+| Cookie Parser | HTTPOnly cookie handling |
+
+---
+
+## 📄 Pages Overview
+
+| Page | Route | Access |
+|---|---|---|
+| Home | `/` | Public |
+| Explore Cars | `/cars` | Public |
+| Car Details | `/cars/:id` | Public |
+| Login | `/login` | Public |
+| Register | `/register` | Public |
+| Add Car | `/add-car` | Private |
+| My Added Cars | `/my-cars` | Private |
+| My Bookings | `/my-bookings` | Private |
+| 404 | `*` | Public |
+
+---
+
+## 🔒 Authentication Flow
+
+```
+Login / Google OAuth
+        ↓
+BetterAuth generates JWT
+        ↓
+Token stored in HTTPOnly cookie
+        ↓
+Private routes protected via middleware.js (Next.js)
+        ↓
+Server APIs protected via verifyToken middleware
+        ↓
+Logout clears session and cookie
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

@@ -14,6 +14,7 @@ export function UpdateCarModal({ car }) {
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData.entries());
         updatedData.availability = updatedData.availability === "true";
+        const {data: tokenData} = await authClient.token()
 
         console.log('car data: ', updatedData);
 
@@ -21,6 +22,7 @@ export function UpdateCarModal({ car }) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(updatedData),
         });

@@ -1,21 +1,28 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export function DeleteCar({ car }) {
-    const handleDelete = async () =>{
+
+    const handleDelete = async () => {
+        const { data: tokenData } = await authClient.token()
         const res = await fetch(`http://localhost:5000/all-car/${car._id}`, {
             method: 'DELETe',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
         })
         const data = await res.json()
-        redirect('/explore-cars');
-
-        console.log('data', data);
+        if (res.ok) {
+            alert("Car Deleted Form My Added Cars Successfully");
+            redirect("/explore-cars");
+        } else {
+            alert(data.message || "Failed to add car");
+        }
     }
     return (
         <AlertDialog>

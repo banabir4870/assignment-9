@@ -1,9 +1,18 @@
 import React from 'react';
 import CarCard from './CarCard';
 import { cinzel } from '@/app/fonts';
+import { headers } from 'next/headers';
+import { auth } from '@/lib/auth';
 
 const FeaturedCars = async () => {
-    const res = await fetch('http://localhost:5000/featured')
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const res = await fetch('http://localhost:5000/featured',{
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const cars = await res.json()
     console.log('cars:', cars)
     return (

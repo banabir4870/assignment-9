@@ -16,10 +16,17 @@ const MyAddedCarsPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
     const user = session?.user;
     console.log('user: ', user);
 
-    const res = await fetch(`http://localhost:5000/all-car/user/${user?.email}`)
+    const res = await fetch(`http://localhost:5000/all-car/user/${user?.email}`,{
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const cars = await res.json()
     return (
         <div className='w-8/12 mx-auto my-10'>
@@ -29,7 +36,7 @@ const MyAddedCarsPage = async () => {
             </div>
             <div className='grid gap-6'>
                 {
-                    cars > 0 ? cars.map(car => <div key={car._id}>
+                    cars.length > 0 ? cars.map(car => <div key={car._id}>
                         <Card className='border'>
                             <div className='flex gap-4'>
                                 <div>

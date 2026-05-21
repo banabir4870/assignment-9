@@ -2,7 +2,7 @@
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField, Select, ListBox, TextArea, cardVariants } from '@heroui/react';
 import React from 'react';
 import { cinzel } from '../fonts';
-import { useSession } from '@/lib/auth-client';
+import { authClient, useSession } from '@/lib/auth-client';
 import { redirect, useRouter } from 'next/navigation';
 
 const AddCarPage = () => {
@@ -19,11 +19,13 @@ const AddCarPage = () => {
         carData.booking_count = 0;
 
         console.log('car data: ', carData);
+        const {data: tokenData} = await authClient.token()
 
         const res = await fetch("http://localhost:5000/all-car", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(carData),
         });

@@ -38,7 +38,7 @@ const MyBookingsPage = async () => {
 
             <div className='grid gap-6'>
                 {
-                    bookings > 0 ? bookings.map(booking => <div key={booking._id}>
+                    bookings.length > 0 ? bookings.map(booking => <div key={booking._id}>
                         <Card className='border'>
                             <div className='flex gap-4'>
                                 <div>

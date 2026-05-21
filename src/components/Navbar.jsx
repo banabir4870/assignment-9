@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import NavLink from './NavLink';
 
 const Navbar = () => {
     const userData = authClient.useSession()
@@ -21,15 +22,15 @@ const Navbar = () => {
             <nav className='w-10/12 mx-auto flex justify-between items-center py-2'>
                 {/* logo */}
                 <div>
-                    <Link href={'/'}><Image src={'/assets/drive_Fleet2.png'} alt='drive fleet logo' width={150} height={100} ></Image></Link>
+                    <NavLink href={'/'}><Image src={'/assets/drive_Fleet2.png'} alt='drive fleet logo' width={150} height={100} ></Image></NavLink>
                 </div>
                 {/* links */}
                 <div>
                     <ul className={`${cinzel.className} grid md:grid-cols-2 lg:grid-cols-4 items-center gap-6 hidden md:grid`}>
-                        <li><Link href={'/'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Home</Link></li>
-                        <li><Link href={'/explore-cars'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Explore Cars</Link></li>
-                        <li><Link href={'/add-car'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Add Car</Link></li>
-                        <li><Link href={'/my-bookings'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>My Bookings</Link></li>
+                        <li><NavLink href={'/'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Home</NavLink></li>
+                        <li><NavLink href={'/explore-cars'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Explore Cars</NavLink></li>
+                        <li><NavLink href={'/add-car'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>Add Car</NavLink></li>
+                        <li><NavLink href={'/my-bookings'} className='text-[#847c6f] font-bold hover:text-[#4e4e35]'>My Bookings</NavLink></li>
                     </ul>
                 </div>
                 {/* profile/login */}

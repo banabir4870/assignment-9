@@ -8,6 +8,10 @@ import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 
+export const metadata = {
+  title: "DriveFleet | Details",
+};
+
 const CarDetailsPage = async ({ params }) => {
     const { id } = await params;
     const {token} = await auth.api.getToken({

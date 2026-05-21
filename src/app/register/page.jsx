@@ -24,7 +24,7 @@ const RegisterPage = () => {
 
         if (data) {
             toast.success('Account Created Successfully.')
-            redirect('/')
+            redirect('/login')
         }
         if (error) {
             toast.error(`${error.message}`)

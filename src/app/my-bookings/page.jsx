@@ -8,6 +8,10 @@ import { CiLocationOn } from 'react-icons/ci';
 import { BookingCancelAlert } from '@/components/BookingCancelAlert';
 import { SlCalender } from 'react-icons/sl';
 
+export const metadata = {
+  title: "DriveFleet | My Bookings",
+};
+
 const MyBookingsPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()

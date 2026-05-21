@@ -10,6 +10,10 @@ import { MdAirlineSeatReclineExtra } from 'react-icons/md';
 import { CiLocationOn } from 'react-icons/ci';
 import { UpdateCarModal } from '@/components/UpdateCarModal';
 
+export const metadata = {
+  title: "DriveFleet | My Cars",
+};
+
 const MyAddedCarsPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()

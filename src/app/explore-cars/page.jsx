@@ -2,6 +2,10 @@ import CarCard from '@/components/CarCard';
 import { cinzel } from '../fonts';
 import { Button } from '@heroui/react';
 
+export const metadata = {
+  title: "DriveFleet | Explore Cars",
+};
+
 const ExploreCarsPage = async ({ searchParams }) => {
     const params = await searchParams || {};
 

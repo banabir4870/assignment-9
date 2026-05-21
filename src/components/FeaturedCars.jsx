@@ -5,14 +5,7 @@ import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
 
 const FeaturedCars = async () => {
-    const { token } = await auth.api.getToken({
-        headers: await headers()
-    })
-    const res = await fetch('http://localhost:5000/featured',{
-        headers: {
-            authorization: `Bearer ${token}`
-        }
-    })
+    const res = await fetch('http://localhost:5000/featured')
     const cars = await res.json()
     console.log('cars:', cars)
     return (

@@ -6,6 +6,7 @@ import { Button, Input, Label, Modal, Surface, TextField, Select, ListBox, Field
 import { redirect } from "next/navigation";
 import { useRouter } from "next/router";
 import { use, useState } from "react";
+import toast from "react-hot-toast";
 import { FaRegEdit } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -46,10 +47,10 @@ export function BookingCarModal({ car }) {
 
         const data = await res.json()
         if (res.ok) {
-            alert("Car Booked Successfully");
+            toast.success("Car Booked Successfully");
             redirect("/explore-cars");
         } else {
-            alert(data.message || "Failed to add car");
+            toast.error(data.message || "Failed to add car");
         }
     }
 return (

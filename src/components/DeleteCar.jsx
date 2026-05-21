@@ -3,6 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export function DeleteCar({ car }) {
@@ -18,10 +19,10 @@ export function DeleteCar({ car }) {
         })
         const data = await res.json()
         if (res.ok) {
-            alert("Car Deleted Form My Added Cars Successfully");
+            toast.success("Car Deleted Form My Added Cars Successfully");
             redirect("/explore-cars");
         } else {
-            alert(data.message || "Failed to add car");
+            toast.error(data.message || "Failed to add car");
         }
     }
     return (

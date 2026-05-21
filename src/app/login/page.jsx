@@ -6,6 +6,7 @@ import { cinzel } from '../fonts';
 import { FaGoogle } from 'react-icons/fa6';
 import Link from 'next/link';
 import { authClient } from '@/lib/auth-client';
+import toast from 'react-hot-toast';
 
 const LogInPage = () => {
     const onSubmit = async (e) => {
@@ -20,10 +21,10 @@ const LogInPage = () => {
         })
 
         if (data) {
-            alert('LogIn Successfully.')
+            toast.success('LogIn Successfully.')
         }
         if (error) {
-            alert(`${error.message}`)
+            toast.error(`${error.message}`)
         }
     };
 
@@ -31,6 +32,10 @@ const LogInPage = () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
+
+        if (data) {
+            toast.success('LogIn Successfully.')
+        }
     }
     return (
         <Card className='w-1/4 mx-auto my-10'>

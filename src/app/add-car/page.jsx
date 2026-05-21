@@ -4,6 +4,7 @@ import React from 'react';
 import { cinzel } from '../fonts';
 import { authClient, useSession } from '@/lib/auth-client';
 import { redirect, useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const AddCarPage = () => {
     const router = useRouter()
@@ -33,10 +34,10 @@ const AddCarPage = () => {
         const data = await res.json()
 
         if (res.ok) {
-            alert("Car added successfully");
+            toast.success("Car added successfully");
             router.push("/explore-cars");
         } else {
-            alert(data.message || "Failed to add car");
+            toast.error(data.message || "Failed to add car");
         }
 
     }

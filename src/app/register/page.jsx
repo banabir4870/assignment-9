@@ -6,6 +6,7 @@ import { FaGoogle } from 'react-icons/fa6';
 import { cinzel } from '../fonts';
 import { authClient } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const RegisterPage = () => {
     const onSubmit = async (e) => {
@@ -22,21 +23,25 @@ const RegisterPage = () => {
         })
 
         if (data) {
-            alert('Account Created Successfully. Please Log In.')
+            toast.success('Account Created Successfully.')
             redirect('/')
         }
         if (error) {
-            alert(`${error.message}`)
+            toast.error(`${error.message}`)
         }
     };
     const handleGoogleLogin = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
+        if (data) {
+            toast.success('Account Created Successfully.')
+            redirect('/')
+        }
     }
     return (
         <Card className='w-1/4 mx-auto my-10'>
-            <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>Create Account</h1>
+            <h1 className={`${cinzel.className} mb-2 font-bold text-center text-3xl`}>Register Account</h1>
             <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
                 <TextField
                     isRequired
@@ -90,7 +95,7 @@ const RegisterPage = () => {
                 </TextField>
                 <div className="flex gap-2">
                     <Button type="submit" className={'w-full rounded-sm'}>
-                        Create Account
+                        Register
                     </Button>
                 </div>
                 <div className="flex items-center gap-3">

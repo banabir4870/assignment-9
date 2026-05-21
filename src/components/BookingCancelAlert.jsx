@@ -3,6 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 import { BiTrash } from "react-icons/bi";
 
 export function BookingCancelAlert({ booking }) {
@@ -19,10 +20,10 @@ export function BookingCancelAlert({ booking }) {
         const data = await res.json()
 
         if (res.ok) {
-            alert("Booking Cancelled Successfully");
+            toast.success("Booking Cancelled Successfully");
             redirect("/explore-cars");
         } else {
-            alert(data.message || "Failed to add car");
+            toast.error(data.message || "Failed to add car");
         }
 
     }

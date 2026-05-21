@@ -20,7 +20,7 @@ const MyBookingsPage = async () => {
 
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`,{
+    const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
         headers: {
             authorization: `Bearer ${token}`
         }
@@ -38,7 +38,7 @@ const MyBookingsPage = async () => {
 
             <div className='grid gap-6'>
                 {
-                    bookings.map(booking => <div key={booking._id}>
+                    bookings > 0 ? bookings.map(booking => <div key={booking._id}>
                         <Card className='border'>
                             <div className='flex gap-4'>
                                 <div>
@@ -62,7 +62,16 @@ const MyBookingsPage = async () => {
                                 </div>
                             </div>
                         </Card>
-                    </div>)
+                    </div>) :
+                        <Card className='py-20 border text-center space-y-4'>
+                            <h1 className={`text-3xl font-bold ${cinzel.className}`}>
+                                No Bookings Yet
+                            </h1>
+
+                            <p className='text-muted'>
+                                You have not booked any cars yet.
+                            </p>
+                        </Card>
                 }
             </div>
 

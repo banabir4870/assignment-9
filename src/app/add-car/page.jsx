@@ -16,6 +16,7 @@ const AddCarPage = () => {
         carData.availability = carData.availability === "true";
         carData.owner_email = session?.user?.email;
         carData.owner_name = session?.user?.name;
+        carData.booking_count = 0;
 
         console.log('car data: ', carData);
 

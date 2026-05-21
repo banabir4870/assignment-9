@@ -29,7 +29,7 @@ const MyAddedCarsPage = async () => {
             </div>
             <div className='grid gap-6'>
                 {
-                    cars.map(car => <div key={car._id}>
+                    cars > 0 ? cars.map(car => <div key={car._id}>
                         <Card className='border'>
                             <div className='flex gap-4'>
                                 <div>
@@ -55,7 +55,16 @@ const MyAddedCarsPage = async () => {
                                 </div>
                             </div>
                         </Card>
-                    </div>)
+                    </div>) :
+                        <Card className='py-20 border text-center space-y-4'>
+                            <h1 className={`text-3xl font-bold ${cinzel.className}`}>
+                                No Cars
+                            </h1>
+
+                            <p className='text-muted'>
+                                You have not registered any car for rent. Click Add Car for registering your first car for rent.
+                            </p>
+                        </Card>
                 }
             </div>
         </div >

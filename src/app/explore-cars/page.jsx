@@ -46,6 +46,9 @@ const ExploreCarsPage = async ({ searchParams }) => {
                     <option value="Hatchback">Hatchback</option>
                     <option value="Luxury">Luxury</option>
                     <option value="Van">Van</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
                 </select>
                 <Button
                     type="submit"

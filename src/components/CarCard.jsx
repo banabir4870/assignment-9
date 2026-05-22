@@ -8,7 +8,7 @@ const CarCard = ({ car }) => {
     return (
         <Card className='hover:shadow-2xl transition-all duration-300 hover:-translate-y-2'>
             <div className='relative'>
-                <Image src={image} alt={car_name} width={500} height={500} className='w-full h-70 content-center object-center border rounded-2xl'></Image>
+                <Image src={image} alt={car_name} width={500} height={500} className='w-full h-80 content-center object-center border rounded-2xl'></Image>
                 <p className='absolute top-2 left-2'><Chip size='lg' color="success" className={`${availability ? '' : 'text-yellow-500'}`}>{availability ? 'Available' : 'Unavailable'}</Chip></p>
                 <p className='absolute top-2 right-2'><Chip size='lg'>{type}</Chip></p>
             </div>
